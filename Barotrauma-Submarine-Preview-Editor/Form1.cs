@@ -34,6 +34,31 @@ namespace Barotrauma_Submarine_Preview_Editor
             
             submarine?.SaveSub(subLocation);
         }
+        
+        private void RemoveMainButton_Click(object sender, EventArgs e)
+        {
+            if (!IsFileValid(SubLocationTextBox.Text, out string subLocation)) return;
+
+            XDocument submarine = IoUtil.LoadSub(subLocation);
+            submarine?.Root?.Attribute("previewimage")?.Remove();
+
+            submarine?.SaveSub(subLocation);
+        }
+
+        private void RemoveLinkedButton_Click(object sender, EventArgs e)
+        {
+            if (!IsFileValid(SubLocationTextBox.Text, out string subLocation)) return;
+
+            XDocument submarine = IoUtil.LoadSub(subLocation);
+            if (submarine.Root == null) return;
+            foreach (XElement elt in submarine.Root.Elements("LinkedSubmarine"))
+            {
+                elt.Attribute("previewimage")?.Remove();
+            }
+            
+            submarine.SaveSub(subLocation);
+        }
+
 
         private void SubLocationButton_Click(object sender, EventArgs e)
         {
