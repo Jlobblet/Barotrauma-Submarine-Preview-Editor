@@ -22,17 +22,9 @@ namespace Barotrauma_Submarine_Preview_Editor
         
         private void GoButton_Click(object sender, EventArgs e)
         {
-            string subLocation = SubLocationTextBox.Text;
-            string imageLocation = ImageLocationTextBox.Text;
-            if (subLocation == "" || !File.Exists(subLocation))
-            {
-                return;
-            }
+            if (!IsFileValid(SubLocationTextBox.Text, out string subLocation)) return;
 
-            if (imageLocation == "" || !File.Exists(imageLocation))
-            {
-                return;
-            }
+            if (!IsFileValid(ImageLocationTextBox.Text, out string imageLocation)) return;
 
             XDocument submarine = IoUtil.LoadSub(subLocation);
             byte[] imageBytes = File.ReadAllBytes(imageLocation);
@@ -61,6 +53,18 @@ namespace Barotrauma_Submarine_Preview_Editor
                              DefaultExt = extension
                          };
             return dialog.ShowDialog() == DialogResult.OK ? dialog.FileName : "";
+        }
+
+        private static bool IsFileValid(string input, out string output)
+        {
+            if (input == "" || !File.Exists(input))
+            {
+                output = null;
+                return false;
+            }
+
+            output = input;
+            return true;
         }
     }
 }
