@@ -41,6 +41,7 @@ namespace Barotrauma_Submarine_Preview_Editor
 
             XDocument submarine = IoUtil.LoadSub(subLocation);
             submarine?.Root?.Attribute("previewimage")?.Remove();
+            submarine?.Root?.Attribute("checkval")?.Remove();
 
             submarine?.SaveSub(subLocation);
         }
@@ -54,6 +55,7 @@ namespace Barotrauma_Submarine_Preview_Editor
             foreach (XElement elt in submarine.Root.Elements("LinkedSubmarine"))
             {
                 elt.Attribute("previewimage")?.Remove();
+                elt.Attribute("checkval")?.Remove();
             }
             
             submarine.SaveSub(subLocation);
