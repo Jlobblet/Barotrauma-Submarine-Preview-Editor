@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using BaroLib;
@@ -19,7 +12,7 @@ namespace Barotrauma_Submarine_Preview_Editor
         {
             InitializeComponent();
         }
-        
+
         private void GoButton_Click(object sender, EventArgs e)
         {
             if (!IsFileValid(SubLocationTextBox.Text, out string subLocation)) return;
@@ -31,10 +24,10 @@ namespace Barotrauma_Submarine_Preview_Editor
             string imageString = Convert.ToBase64String(imageBytes);
             submarine?.Root?.SetAttributeValue("previewimage", imageString);
             submarine?.Root?.Attribute("checkval")?.Remove();
-            
+
             submarine?.SaveSub(subLocation);
         }
-        
+
         private void RemoveMainButton_Click(object sender, EventArgs e)
         {
             if (!IsFileValid(SubLocationTextBox.Text, out string subLocation)) return;
@@ -57,7 +50,7 @@ namespace Barotrauma_Submarine_Preview_Editor
                 elt.Attribute("previewimage")?.Remove();
                 elt.Attribute("checkval")?.Remove();
             }
-            
+
             submarine.SaveSub(subLocation);
         }
 
@@ -68,7 +61,7 @@ namespace Barotrauma_Submarine_Preview_Editor
             if (result == "") return;
             SubLocationTextBox.Text = result;
         }
-        
+
         private void ImageBrowseButton_Click(object sender, EventArgs e)
         {
             string result = ShowOpenFileDialog(".png");
