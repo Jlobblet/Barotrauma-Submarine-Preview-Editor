@@ -64,12 +64,16 @@ namespace Barotrauma_Submarine_Preview_Editor
 
         private void SubLocationButton_Click(object sender, EventArgs e)
         {
-            SubLocationTextBox.Text = ShowOpenFileDialog(".sub");
+            string result = ShowOpenFileDialog(".sub");
+            if (result == "") return;
+            SubLocationTextBox.Text = result;
         }
         
         private void ImageBrowseButton_Click(object sender, EventArgs e)
         {
-            ImageLocationTextBox.Text = ShowOpenFileDialog(".png");
+            string result = ShowOpenFileDialog(".png");
+            if (result == "") return;
+            ImageLocationTextBox.Text = result;
         }
 
         private static string ShowOpenFileDialog(string extension)
