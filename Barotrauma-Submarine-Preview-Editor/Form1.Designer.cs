@@ -117,7 +117,7 @@
             // 
             // RemoveMainButton
             // 
-            this.RemoveMainButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RemoveMainButton.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveMainButton.Location = new System.Drawing.Point(206, 142);
             this.RemoveMainButton.Name = "RemoveMainButton";
             this.RemoveMainButton.Size = new System.Drawing.Size(189, 41);
@@ -128,7 +128,7 @@
             // 
             // RemoveLinkedButton
             // 
-            this.RemoveLinkedButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RemoveLinkedButton.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveLinkedButton.Location = new System.Drawing.Point(401, 142);
             this.RemoveLinkedButton.Name = "RemoveLinkedButton";
             this.RemoveLinkedButton.Size = new System.Drawing.Size(188, 41);
