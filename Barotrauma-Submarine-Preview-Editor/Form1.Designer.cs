@@ -73,6 +73,7 @@
             // 
             // ImageGroupBox
             // 
+            this.ImageGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageGroupBox.Controls.Add(this.ImageBrowseButton);
             this.ImageGroupBox.Controls.Add(this.ImageLocationTextBox);
             this.ImageGroupBox.Location = new System.Drawing.Point(12, 77);
@@ -84,7 +85,7 @@
             // 
             // ImageBrowseButton
             // 
-            this.ImageBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImageBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageBrowseButton.Location = new System.Drawing.Point(460, 21);
             this.ImageBrowseButton.Name = "ImageBrowseButton";
             this.ImageBrowseButton.Size = new System.Drawing.Size(93, 22);
