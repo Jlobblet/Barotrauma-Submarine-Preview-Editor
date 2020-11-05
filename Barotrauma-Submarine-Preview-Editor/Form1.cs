@@ -53,7 +53,7 @@ namespace Barotrauma_Submarine_Preview_Editor
             ImageLocationTextBox.Text = ShowOpenFileDialog(".png");
         }
 
-        private string ShowOpenFileDialog(string extension)
+        private static string ShowOpenFileDialog(string extension)
         {
             var dialog = new OpenFileDialog
                          {
