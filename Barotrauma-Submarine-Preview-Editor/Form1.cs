@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
+using BaroLib;
+
+namespace Barotrauma_Submarine_Preview_Editor
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            string subLocation = SubLocationTextBox.Text;
+            string imageLocation = ImageLocationTextBox.Text;
+            if (subLocation == "" || !File.Exists(subLocation))
+            {
+                return;
+            }
+
+            if (imageLocation == "" || !File.Exists(imageLocation))
+            {
+                return;
+            }
+
+            XDocument submarine = IoUtil.LoadSub(subLocation);
+            byte[] imageBytes = File.ReadAllBytes(imageLocation);
+            string imageString = Convert.ToBase64String(imageBytes);
+            submarine?.Root?.SetAttributeValue("previewimage", imageString);
+            submarine?.Root?.Attribute("checkval")?.Remove();
+            
+            submarine?.SaveSub(subLocation);
+        }
+
+        private void SubLocationButton_Click(object sender, EventArgs e)
+        {
+            SubLocationTextBox.Text = ShowOpenFileDialog(".sub");
+        }
+        
+        private void ImageBrowseButton_Click(object sender, EventArgs e)
+        {
+            ImageLocationTextBox.Text = ShowOpenFileDialog(".png");
+        }
+
+        private string ShowOpenFileDialog(string extension)
+        {
+            var dialog = new OpenFileDialog
+                         {
+                             CheckFileExists = true,
+                             DefaultExt = extension
+                         };
+            return dialog.ShowDialog() == DialogResult.OK ? dialog.FileName : "";
+        }
+    }
+}
